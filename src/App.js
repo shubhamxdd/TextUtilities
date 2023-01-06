@@ -1,15 +1,15 @@
 import { useState } from "react";
 import "./App.css";
 import Alert from "./components/Alert";
-import About from "./components/About";
+// import About from "./components/About";
 import Navbar from "./components/Navbar";
 import TextForm from "./components/TextForm";
-import {
-  BrowserRouter as Router,
-  Switch,
-  Route,
-  Link
-} from "react-router-dom";
+// import {
+//   BrowserRouter as Router,
+//   Switch,
+//   Route,
+//   Link
+// } from "react-router-dom";
 
 function App() {
   const [theme, setTheme] = useState("light")
@@ -43,22 +43,22 @@ function App() {
   }
   return (
     <>
-    <Router>
+    {/* <Router> */}
 
       {/* <Navbar title="TextUtilities" aboutText="About us" /> */}
       <Navbar title="TextUtilities" third="Contact us" mode={theme} toggleMode={toggleMode} />
       <Alert alert={alert}/>
       <div className="container">
-        <Switch>
+        {/* <Switch>
           <Route exact path="/about">
             <About />
           </Route>
-          <Route exact path="/">
+          <Route exact path="/"> */}
         <TextForm heading="Enter text here" mode={theme} showAlert={sAlert}/>
-          </Route>
-        </Switch>
+          {/* </Route>
+        </Switch> */}
       </div>
-    </Router>
+    {/* </Router> */}
     </>
   );
 }
