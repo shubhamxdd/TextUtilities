@@ -8,7 +8,7 @@ import {
   BrowserRouter as Router,
   Switch,
   Route,
-  Link
+  // Link
 } from "react-router-dom";
 
 function App() {
@@ -51,7 +51,7 @@ function App() {
       <div className="container">
         <Switch>
           <Route exact path="/about">
-            <About />
+            <About mode={theme} />
           </Route>
           <Route exact path="/">
         <TextForm heading="Enter text here" mode={theme} showAlert={sAlert}/>

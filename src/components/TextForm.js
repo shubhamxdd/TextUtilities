@@ -57,7 +57,7 @@ export default function TextForm(props) {
         style={{ color: props.mode === "dark" ? "white" : "black" }}
       >
         <div className="mb-3">
-          <h1>{props.heading}</h1>
+          <h1 className="mb-3">{props.heading}</h1>
           <textarea
             className="form-control"
             id="textarea"
@@ -70,7 +70,7 @@ export default function TextForm(props) {
             rows="6"
           ></textarea>
         </div>
-        <button
+        <button disabled={text.length === 0}
           className={`btn btn-${props.mode === "dark"?"secondary":"light"} mx-1 mb-1`}
 
           // "btn btn-${props.mode === "light"?"dark":"light"} mx-1 mb-1"
@@ -78,13 +78,13 @@ export default function TextForm(props) {
         >
           Convert to Uppercase
         </button>
-        <button
+        <button disabled={text.length === 0}
           className={`btn btn-${props.mode === "dark"?"secondary":"light"} mx-1 mb-1`}
           onClick={handleLowercaseClick}
         >
           Convert to Lowercase
         </button>
-        <button
+        <button disabled={text.length === 0}
           className={`btn btn-${props.mode === "dark"?"secondary":"light"} mx-1 mb-1`}
           onClick={handleSentanceCase}
         >
@@ -96,16 +96,16 @@ export default function TextForm(props) {
         >
           Remove extra spaces
         </button> */}
-        <button
+        <button disabled={text.length === 0}
           className={`btn btn-${props.mode === "dark"?"secondary":"light"} mx-1 mb-1`}
           onClick={handleFirstCapital}
         >
           Capitalize first letter of each word
         </button>
-        <button className={`btn btn-${props.mode === "dark"?"secondary":"light"} mx-1 mb-1`} onClick={copyToClipboard}>
+        <button disabled={text.length === 0} className={`btn btn-${props.mode === "dark"?"secondary":"light"} mx-1 mb-1`} onClick={copyToClipboard}>
           Copy to clipboard
         </button>
-        <button className="btn btn-danger mx-1" onClick={handleClearText}>
+        <button disabled={text.length === 0} className="btn btn-danger mx-1" onClick={handleClearText}>
           Clear textarea
         </button>
         </div>
@@ -114,9 +114,9 @@ export default function TextForm(props) {
         style={{ color: props.mode === "dark" ? "white" : "black" }}
       >
         <h1>Text Summary:</h1>
-        <p>Number of words: {text.split(" ").length} </p>
+        <p>Number of words: {text.split(/\s+/).filter((element)=>{return element.length!==0}).length} </p>
         <p>Number of characters: {text.length}</p>
-        {/* <p>{0.008 * text.split(" ").length} Minutes read</p> */}
+        {/* <p>{0.008 * text.split(" ").filter((element)=>{return element.length!==0}).length} Minutes read</p> */}
         <h3>Preview: </h3>
         <p style={{fontSize: "1.1rem"}}>{text==="Enter text here"?"Enter some text in textarea to preview it here":text}</p>
       </div>
